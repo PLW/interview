@@ -376,6 +376,35 @@ They are explicitly warning you: **don’t only pitch architecture**—they want
 
 ### 3.1 “Deeper dive into your process”
 
+**Vocabulary**
+1. NFR: Non-Functional Requirement
+* While "Functional Requirements" define what a system does (e.g., "The user can log in"), NFRs define how the system performs or behaves.
+* Focus: The "ilities"—Scalability, Availability, Reliability, Maintainability, and Security.
+* Example: "The system must handle 10,000 concurrent requests (Scalability) with a P95 latency of <200ms (Performance)."
+2. ADR: Architecture Decision Record
+* An ADR is a short text document that captures a significant architectural decision made during a project, including the context and the consequences.
+* Focus: Documentation and "Why." It prevents future engineers from wondering why a specific technology or pattern was chosen (and prevents them from reverting it without understanding the trade-offs).
+* Example: "ADR-005: We will use a Shared-Nothing architecture instead of a Full-Crossbar to ensure linear scalability."
+3. SLO: Service Level Objective
+* An SLO is a specific target level for the reliability of a service. It is a key component of the SRE framework.
+* Focus: Measurement. It is built upon SLIs (Service Level Indicators, like "Request Latency").
+* Example: "99.9% of all successful requests must be served in less than 500ms over a rolling 30-day window."
+4. SRE: Site Reliability Engineering
+* Originally coined by Google, SRE is a discipline that applies software engineering mindsets to IT operations.
+* Focus: Automation and Reliability. SREs use software to manage systems, solve problems, and automate operational tasks (like deployments or scaling) that were previously done manually.
+* Key Concept: The Error Budget. If a team meets its SLOs, they can ship new features quickly; if they exhaust their error budget, they must stop shipping and focus on reliability.
+
+**Summary Table**
+| Acronym | Role in the Lifecycle | Primary Purpose |
+| :------ | :-------------------- | :-------------- |
+| NFR | Design Phase | Defining the constraints and quality of the system. |
+| ADR | Design/Development| Documenting the "Why" behind the architecture. |
+| SLO | Production/Ops | Setting clear goals for what "reliable" looks like. |
+| SRE | Operations/Scale | Using code to ensure the system meets its SLOs. |
+
+**Connecting the Dots**
+In your project, you might define an NFR for low-latency streaming, document the choice of storage in an ADR, set an SLO to measure that latency in production, and have an SRE build the automation to ensure that SLO is maintained as you scale.
+
 **Response classifications**
 
 * **Repeatable process** (discovery → design → build → validate → iterate)
