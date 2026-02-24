@@ -233,7 +233,14 @@ Your criteria should include:
 
 **What they want**
 
-* Real distributed systems thinking: failure modes, scaling, caching, concurrency, isolation, observability.
+* Real distributed systems thinking: 
+  * failure modes, 
+  * scaling, 
+  * caching, 
+  * concurrency, 
+  * isolation, 
+  * observability.
+
 * In Snowflake-like systems: strong attention to **storage/compute separation** and **cloud services orchestration**.
 
 **Response classifications**
