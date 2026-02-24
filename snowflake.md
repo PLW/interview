@@ -289,16 +289,16 @@ A crisp design that mirrors the excerpt’s layers:
 
 * Failure modes:
 
-  * partial indexing; 
-  * corrupt doc; 
-  * retry storms; 
-  * backpressure
+  * partial indexing,
+  * corrupt doc,
+  * retry storms,
+  * backpressure.
 
 * Observability:
 
   * index lag metric, 
   * p95/p99 search latency, 
-  * cache hit ratio
+  * cache hit ratio.
 
 ---
 
@@ -352,6 +352,8 @@ A strong roadmap format:
   * canary tenants
   * feature flags
   * backout plan (disable index usage, fall back to scan or return “feature unavailable” safely)
+
+![Deployment Plan](deploy-graphic.png)
 
 **Metrics you’d commit to**
 
