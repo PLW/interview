@@ -282,15 +282,23 @@ A crisp design that mirrors the excerpt’s layers:
 * Index placement strategy:
 
   * stored centrally vs cached per-warehouse
+
 * Concurrency model:
 
   * isolate “index build” from “search queries” workloads
+
 * Failure modes:
 
-  * partial indexing; corrupt doc; retry storms; backpressure
+  * partial indexing; 
+  * corrupt doc; 
+  * retry storms; 
+  * backpressure
+
 * Observability:
 
-  * index lag metric, p95/p99 search latency, cache hit ratio
+  * index lag metric, 
+  * p95/p99 search latency, 
+  * cache hit ratio
 
 ---
 
