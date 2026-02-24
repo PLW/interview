@@ -17,6 +17,52 @@ $$\min \|c_i\|_1 \text{ s.t. } x_i = X c_i, c_{ii} = 0$$
 
 ---
 
+1. Sparse Subspace Clustering (SSC)
+SSC is the gold standard for your specific problem. It relies on the "Self-Expressiveness" property: each point in a union of subspaces can be efficiently represented as a linear combination of other points from the same subspace.
+The Math: It solves an 
+-minimization problem to find the sparse coefficients for each point.
+Complexity: Standard SSC is 
+, which is too slow for 
+ points. However, Elastic Net Subspace Clustering (EnSC) or Sparse Optimization using ADMM can scale this significantly.
+Why it fits: It naturally handles the "thickened" aspect (
+) by allowing for a noise term in the sparse reconstruction.
+
+---
+
+2. Random Projections & Johnson-Lindenstrauss (JL)
+Before running a cover algorithm, you should exploit the JL Lemma. Since you are in 
+-dim space with 
+ points, you can project these points into a much lower dimensional space (
+) while preserving distances and "subspace-ness."
+Efficiency: This reduces the computational constant of every subsequent step.
+Subspace Preservation: Projections of subspaces are still subspaces.
+
+---
+
+3. Randomized K-Subspaces (KSS)
+Similar to K-Means, but instead of calculating centroids (points), you calculate principal components (subspaces) for each cluster.
+Algorithm:
+Randomly assign points to 
+ subspaces.
+Use SVD (Singular Value Decomposition) on each cluster to find the best-fit 
+-dimensional subspace.
+Re-assign points to the "closest" subspace based on the projection distance.
+Pros: Very fast; 
+.
+Cons: Highly sensitive to initial conditions and requires you to guess 
+ (the number of subspaces).
+
+---
+
+4. Algebraic Multigrid or Grassmannian Clustering
+If you view your subspaces as points on a Grassmannian Manifold (the space of all 
+-dimensional subspaces), you can use spectral clustering on the points.
+Efficiency: For 
+ points, you would use an Nyström approximation to the spectral matrix to avoid the 
+ similarity matrix cost.
+
+---
+
 ## 2. Low-Rank Representation (LRR)
 
 While SSC looks for sparse connections, LRR looks for a global low-rank structure. It captures the holistic "clean" subspaces hidden behind your "thickened" ($\epsilon$) noise.
