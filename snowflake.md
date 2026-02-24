@@ -1,9 +1,6 @@
 
-## 0) The concrete “micro‑project” we’ll use as the running example
-
-To make the interview prompt tangible, assume the micro‑project is:
-
-### Micro‑project: “Document Analytics + Search in a Snowflake-like Platform”
+### Interview micro‑project:
+###  Document Analytics + Search in Snowflake-like Platform
 
 Add first-class support for **document data** (PDFs, docs, text blobs) alongside **tables and semi‑structured data**, so users can:
 
